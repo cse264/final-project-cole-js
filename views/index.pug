@@ -1,13 +1,17 @@
-extends layout
-
-block content
-  div.navbar
-    if !user_id
-      button#signup Create an Account
-      button#signin Sign In
-    else
-      button#signout Sign Out
-  h1= title
-  p Welcome to #{title}
-  div.the_button
-    button The Button
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/index.css')
+    script(src='/javascripts/index.js')
+  body
+    div.navbar
+      if !user_id
+        button#signup Create an Account
+        button#signin Sign In
+      else
+        button#signout Sign Out
+    h1= title
+    p Welcome #{user_id}
+    div.the_button
+      button The Button

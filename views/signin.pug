@@ -1,0 +1,12 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/signin.css')
+    script(src='/javascripts/signin.js')
+  body
+    form.login-form(name="login-form" onsubmit="return validateForm()" action="/signin" method="POST")
+        input#username(type='text' placeholder='username' name='username')
+        input#password(type='password' placeholder='password' name='password')
+        button#submit Sign In
+

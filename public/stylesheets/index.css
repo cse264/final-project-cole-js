@@ -5,13 +5,11 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-a {
-  color: #00B7FF;
-}
 div.navbar {
   width: 100%;
   background-color: grey;
 }
+
 div.navbar button {
   height: 100%;
   background-color: grey;
@@ -20,6 +18,7 @@ div.navbar button {
   font-size: 20px;
   padding: 20px;
 }
+
 div.navbar button:hover {
   background-color: black;
   cursor: pointer;

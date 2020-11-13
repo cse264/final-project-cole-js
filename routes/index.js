@@ -6,9 +6,12 @@ router.get('/', function(req, res, next) {
   res.render('index', { title: 'Cash Clicker', user_id: '' });
 });
 
-/* GET home page (signed in). */
-router.get('/signedin', function(req, res, next) {
-  res.render('index', { title: 'Cash Clicker', user_id: '1' });
+router.get('/signin', function(req, res, next) {
+  res.render('signin', { title: 'Cash Clicker' });
+});
+
+router.post('/signin', function(req, res, next) {
+  res.render('index', { title: 'Cash Clicker', user_id: req.body.username })
 });
 
 module.exports = router;
