@@ -13,7 +13,15 @@ window.onload = function () {
         document.getElementById("signout")
         .addEventListener("click",function(e){
             console.log("Signing out");
-            window.location.replace('/');
+            fetch('/signout',
+            {
+                method:"POST",
+                body: "",
+                headers: {
+                    "Content-Type": "application/json"
+                }
+            });
+            window.location.reload();
         });
     }
 }
