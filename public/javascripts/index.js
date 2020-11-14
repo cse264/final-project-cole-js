@@ -20,8 +20,10 @@ window.onload = function () {
                 headers: {
                     "Content-Type": "application/json"
                 }
+            })
+            .then(response => {
+                location.reload();
             });
-            window.location.reload();
         });
     }
 }
