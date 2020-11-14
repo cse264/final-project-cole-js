@@ -1,0 +1,19 @@
+body {
+    background-color: white;
+    margin: 0px;
+    padding: 10px;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+form {
+    margin-top: 50px;
+    text-align: center;
+}
+
+form input {
+    font-size: 20px;
+}
+
+form button {
+    font-size: 20px;
+}

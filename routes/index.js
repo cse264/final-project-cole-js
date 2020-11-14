@@ -15,6 +15,14 @@ router.get('/signin', function(req, res, next) {
   res.render('signin', { title: 'Cash Clicker' });
 });
 
+router.get('/signup', function(req, res, next) {
+  res.render('signup', { title: 'Cash Clicker' });
+});
+
+router.post('/signup', function(req, res, next) {
+  res.status(200).redirect('/');
+});
+
 router.post('/signin', function(req, res, next) {
   res.cookie('username', req.body.username, { maxAge: 60000 });
   res.status(200).redirect('/');
