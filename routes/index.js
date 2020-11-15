@@ -69,4 +69,11 @@ router.post('/signout', function(req, res, next) {
   res.status(200).redirect('/');
 });
 
+router.post('/getCash', function(req, res, next) {
+  pool.query("UPDATE users SET cash=cash+1 WHERE username=$1", [req.body.username], (err, result) => {
+    console.log(err, result);
+    res.status(200).send();
+  })
+});
+
 module.exports = router;

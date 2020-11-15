@@ -13,5 +13,6 @@ html
         button#signout Sign Out
     h1= title
     p Welcome #{user_id}
-    div.the_button
-      button The Button
+    if user_id
+      .the_button
+        button#theButton The Button
