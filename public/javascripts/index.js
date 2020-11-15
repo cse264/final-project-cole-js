@@ -35,6 +35,14 @@ window.onload = function () {
         });
     }
 
+    var profile = document.querySelector('#profile');
+    if(profile) {
+        document.getElementById("profile")
+        .addEventListener("click", function(e){
+            location.href='/users/'+getCookie("username");
+        });
+    }
+
     document.getElementById("leaderboard")
         .addEventListener("click", function(e){
             location.href='/leaderboard';
