@@ -5,6 +5,9 @@ html
     link(rel='stylesheet', href='/stylesheets/signup.css')
     script(src='/javascripts/signup.js')
   body
+    if error == 'true'
+      script.
+        alert("This username has already been taken. Please choose another one and try again.");
     form.signup-form(name="signup-form" onsubmit="return validateForm()" action="/signup" method="POST")
         input#username(type='text' placeholder='username' name='username')
         input#password(type='password' placeholder='password' name='password')
