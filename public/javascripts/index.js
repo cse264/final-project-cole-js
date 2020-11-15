@@ -4,7 +4,7 @@ window.onload = function () {
     if(signup) {
         document.getElementById("signup")
         .addEventListener("click",function(e){
-            window.location.replace('/signup');
+            location.href='/signup';
         });
     }
 
@@ -12,7 +12,7 @@ window.onload = function () {
     if(signin) {
         document.getElementById("signin")
         .addEventListener("click",function(e){
-            window.location.replace('/signin');
+            location.href='/signin';
         });
     }
  
@@ -34,6 +34,11 @@ window.onload = function () {
             });
         });
     }
+
+    document.getElementById("leaderboard")
+        .addEventListener("click", function(e){
+            location.href='/leaderboard';
+        });
 
     function getCookie(cname) {
         var name = cname + "=";
