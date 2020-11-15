@@ -76,4 +76,10 @@ router.post('/getCash', function(req, res, next) {
   })
 });
 
+router.get('/leaderboard', function(req, res, next) {
+  pool.query("SELECT username, cash FROM users ORDER BY cash DESC", (err, result) => {
+    res.render('leaderboard', {title: "Cash Clicker", data: result.rows})
+  });
+});
+
 module.exports = router;

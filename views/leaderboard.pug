@@ -1,0 +1,7 @@
+doctype html
+html
+head
+    title= title
+body
+    -for(var row in data)
+        p #{data[row].username} has $#{data[row].cash}
