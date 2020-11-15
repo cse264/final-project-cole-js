@@ -1,8 +1,16 @@
 doctype html
 html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    link(rel='stylesheet', href='/stylesheets/leaderboard.css')
 head
     title= title
 body
+    -var count=1
     -for(var row in data)
-        p #{data[row].username} has $#{data[row].cash}
+        p(id=data[row].username) #{count}. 
+            a(href='/users/'+data[row].username) #{data[row].username}
+            br
+            br
+            | $#{data[row].cash}
+        hr
+        -var count=count+1
