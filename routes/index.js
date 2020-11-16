@@ -1,6 +1,9 @@
 var express = require('express');
 var router = express.Router();
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 const { Pool } = require('pg')
 const pool = new Pool({
   host: 'ec2-34-232-24-202.compute-1.amazonaws.com',
@@ -48,27 +51,31 @@ router.get('/signup', function(req, res, next) {
 
 
 router.post('/signup', function(req, res, next) {
-  pool.query('INSERT INTO users (username, password, date_created, cash) VALUES ($1, $2, $3, $4)', 
-      [req.body.username, req.body.password, new Date(), 0], (err, result) => {
-    console.log(err, result);
-    if(err) {
-      res.status(400).redirect('/signup?error=true');
-    } else {
-      res.status(200).redirect('/');
-    }
-  })
+  bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
+    pool.query('INSERT INTO users (username, password, date_created, cash) VALUES ($1, $2, $3, $4)', 
+      [req.body.username, hash, new Date(), 0], (err, result) => {
+      if(err) {
+        res.status(400).redirect('/signup?error=true');
+      } else {
+        res.status(200).redirect('/');
+      }
+    })
+  });
 });
 
 router.post('/signin', function(req, res, next) {
-  pool.query('SELECT * FROM users WHERE username=$1 AND password=$2', [req.body.username, req.body.password], (err, result) => {
-    console.log(err, result.rows[0]);
+  pool.query('SELECT * FROM users WHERE username=$1', [req.body.username], (err, result) => {
     if(result.rows[0] == null) {
-      console.log("user not found");
       res.status(401).redirect('/signin?reattempt=true');
     } else {
-      console.log("user found");
-      res.cookie('username', req.body.username, { maxAge: 600000 });
-      res.status(200).redirect('/');
+      bcrypt.compare(req.body.password, result.rows[0].password, function(err, compareResult) {
+        if (compareResult) {
+          res.cookie('username', req.body.username, { maxAge: 600000 });
+          res.status(200).redirect('/');
+        } else {
+          res.status(401).redirect('/signin?reattempt=true');
+        }
+      });
     }
   })
 });
@@ -80,7 +87,6 @@ router.post('/signout', function(req, res, next) {
 
 router.post('/getCash', function(req, res, next) {
   pool.query("UPDATE users SET cash=cash+1 WHERE username=$1", [req.body.username], (err, result) => {
-    console.log(err, result);
     res.status(200).send();
   })
 });
