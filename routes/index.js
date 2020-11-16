@@ -14,11 +14,20 @@ const pool = new Pool({
 /* GET home page. */
 router.get('/', function(req, res, next) {
   username = ''
+  var cash = 0
   if(req.cookies.username) {
     username = req.cookies.username;
+    pool.query("SELECT cash FROM users WHERE username=$1", [req.cookies.username], (err, result) => {
+      if(err) {
+         
+      } else {
+        cash = result.rows[0].cash;
+        res.render('index', { title: 'Cash Clicker', user_id: username, cash: cash });
+      }
+    });
+  } else {
+    res.render('index', { title: 'Cash Clicker', user_id: username, cash: cash });
   }
-  console.log("Logged in user: " + username);
-  res.render('index', { title: 'Cash Clicker', user_id: username });
 });
 
 router.get('/signin', function(req, res, next) {
