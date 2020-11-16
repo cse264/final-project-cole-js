@@ -81,7 +81,9 @@ window.onload = function () {
                 }
             })
             .then(response => {
-
+                var cash = document.getElementById("cash").innerHTML;
+                cash++;
+                document.getElementById("cash").innerHTML = cash;
             });
         });
     }
