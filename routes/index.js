@@ -67,14 +67,14 @@ router.post('/signin', function(req, res, next) {
       res.status(401).redirect('/signin?reattempt=true');
     } else {
       console.log("user found");
-      res.cookie('username', req.body.username, { maxAge: 60000 });
+      res.cookie('username', req.body.username, { maxAge: 600000 });
       res.status(200).redirect('/');
     }
   })
 });
 
 router.post('/signout', function(req, res, next) {
-  res.cookie('username', '', { maxAge: 60000 });
+  res.cookie('username', '', { maxAge: 600000 });
   res.status(200).redirect('/');
 });
 
