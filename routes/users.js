@@ -21,7 +21,8 @@ router.get('/:username', function(req, res, next) {
     if(err) {
       res.status(404).send();
     } else {
-      res.render('user', {username: result.rows[0].username, date: result.rows[0].date_created, cash: result.rows[0].cash });
+      console.log(result.rows[0].date_created.toDateString());
+      res.render('user', {username: result.rows[0].username, date: result.rows[0].date_created.toDateString(), cash: result.rows[0].cash });
     }
   });
 });
