@@ -7,12 +7,13 @@ body {
 
 div.navbar {
   width: 100%;
-  background-color: grey;
+  background-color: green;
 }
 
 div.navbar button {
+  outline: none;
   height: 100%;
-  background-color: grey;
+  background-color: green;
   border: none;
   color: white;
   font-size: 20px;
@@ -26,4 +27,23 @@ div.navbar button:hover {
 
 div.the_button {
   text-align: center;
+}
+
+div.the_button p {
+  font-size: 24px;
+}
+
+div.the_button button {
+  color: white;
+  outline: none;
+  border: none;
+  border-radius: 14px;
+  background-color: black;
+  font-size: 32px;
+  padding: 20px;
+}
+
+div.the_button button:hover {
+  background-color: green;
+  cursor: pointer;
 }
