@@ -41,9 +41,13 @@ div.the_button button {
   background-color: black;
   font-size: 32px;
   padding: 20px;
+
+  touch-action: manipulation;
 }
 
 div.the_button button:hover {
   background-color: green;
   cursor: pointer;
+
+  touch-action: manipulation;
 }
