@@ -3,10 +3,12 @@ html
   head
     title= title
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet', href='/stylesheets/index.css')
+    link(rel='stylesheet',
+    href='/stylesheets/index.css')
     script(src='/javascripts/index.js')
   body
     div.navbar
+      button#home Home
       if !user_id
         button#signup Create an Account
         button#signin Sign In

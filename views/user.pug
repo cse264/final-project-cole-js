@@ -4,7 +4,17 @@ head
     title= title
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet', href='/stylesheets/user.css')
+    script(src='/javascripts/user.js')
 body
+    div.navbar
+      button#home Home
+      if !user_id
+        button#signup Create an Account
+        button#signin Sign In
+      else
+        button#signout Sign Out
+        button#profile Profile
+      button#leaderboard Leaderboard
     h1 #{username}
     p Joined on #{date}
     p Current cash: $#{cash}

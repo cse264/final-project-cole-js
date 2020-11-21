@@ -34,6 +34,22 @@ window.onload = function () {
             });
         });
     }
+    
+    function getCookie(cname) {
+        var name = cname + "=";
+        var decodedCookie = decodeURIComponent(document.cookie);
+        var ca = decodedCookie.split(';');
+        for(var i = 0; i <ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') {
+            c = c.substring(1);
+          }
+          if (c.indexOf(name) == 0) {
+            return c.substring(name.length, c.length);
+          }
+        }
+        return "";
+      }
 
     var profile = document.querySelector('#profile');
     if(profile) {
@@ -52,44 +68,4 @@ window.onload = function () {
         .addEventListener("click", function(e){
             location.href='/';
         });
-
-    function getCookie(cname) {
-        var name = cname + "=";
-        var decodedCookie = decodeURIComponent(document.cookie);
-        var ca = decodedCookie.split(';');
-        for(var i = 0; i <ca.length; i++) {
-          var c = ca[i];
-          while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-          }
-          if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-          }
-        }
-        return "";
-      }
-
-    var theButton = document.querySelector('#theButton');
-    if(theButton) {
-        document.getElementById("theButton")
-        .addEventListener("click", function(e){
-            var uCookie = getCookie("username");
-            var info = {
-                username: uCookie
-            };
-            fetch('/getCash',
-            {
-                method:"POST",
-                body: JSON.stringify(info),
-                headers: {
-                    "Content-Type": "application/json"
-                }
-            })
-            .then(response => {
-                var cash = document.getElementById("cash").innerHTML;
-                cash++;
-                document.getElementById("cash").innerHTML = cash;
-            });
-        });
-    }
 }

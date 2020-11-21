@@ -2,9 +2,19 @@ doctype html
 html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet', href='/stylesheets/leaderboard.css')
+    script(src='/javascripts/leaderboard.js')
 head
     title= title
 body
+    div.navbar
+      button#home Home
+      if !user_id
+        button#signup Create an Account
+        button#signin Sign In
+      else
+        button#signout Sign Out
+        button#profile Profile
+      button#leaderboard Leaderboard
     -var count=1
     -for(var row in data)
         p(id=data[row].username) #{count}. 
