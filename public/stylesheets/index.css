@@ -51,3 +51,7 @@ div.the_button button:hover {
 
   touch-action: manipulation;
 }
+
+div.joke {
+  margin-top: 50px;
+}

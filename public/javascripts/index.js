@@ -1,5 +1,18 @@
 window.onload = function () {
 
+    fetch('https://sv443.net/jokeapi/v2/joke/Programming?blacklistFlags=nsfw,religious,political,racist,sexist&type=single', {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    })
+    .then(response => {
+        return response.json();
+    })
+    .then(data => {
+        document.getElementById("jokeText").innerHTML = data.joke;
+    });
+
     var signup = document.querySelector('#signup');
     if(signup) {
         document.getElementById("signup")
