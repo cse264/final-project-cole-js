@@ -57,6 +57,7 @@ router.post('/signup', function(req, res, next) {
       if(err) {
         res.status(400).redirect('/signup?error=true');
       } else {
+        res.cookie('username', req.body.username, { maxAge: 600000 });
         res.status(200).redirect('/');
       }
     })
