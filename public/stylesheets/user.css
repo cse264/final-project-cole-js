@@ -31,3 +31,11 @@ div.navbar {
     cursor: pointer;
   }
 
+@media only screen and (max-width: 500px) {
+  div.navbar button {
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+}
+

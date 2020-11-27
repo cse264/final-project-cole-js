@@ -63,3 +63,11 @@ div.the_button button:hover {
 div.joke {
   margin-top: 50px;
 }
+
+@media only screen and (max-width: 500px) {
+  div.navbar button {
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+}
