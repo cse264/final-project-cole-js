@@ -2,7 +2,9 @@ body {
     background-color: white;
     margin: 0px;
     padding: 10px;
-    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+    font-family: 'Noto Sans', sans-serif;
+    background-image: url("../images/bg.jpg");
+    background-size: cover;
 }
 
 form {

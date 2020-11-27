@@ -3,8 +3,9 @@ html
   head
     title= title
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet',
-    href='/stylesheets/index.css')
+    link(rel='stylesheet', href='/stylesheets/index.css')
+    link(rel="preconnect" href="https://fonts.gstatic.com")
+    link(href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet")
     script(src='/javascripts/index.js')
   body
     div.navbar
@@ -16,13 +17,14 @@ html
         button#signout Sign Out
         button#profile Profile
       button#leaderboard Leaderboard
-    h1= title
-    p Welcome #{user_id}
+    div.welcome
+      h1= title
+      p Welcome #{user_id}
     if user_id
       .the_button
         p $
           span#cash #{cash}
         button#theButton The Button
     .joke
-      h3 A random programming joke, courtesty of #[a(href="https://sv443.net/jokeapi/v2/") Joke API]:
+      h3 A random programming joke, courtesy of #[a(href="https://sv443.net/jokeapi/v2/") Joke API]:
       p#jokeText
