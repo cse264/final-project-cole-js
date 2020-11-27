@@ -3,8 +3,6 @@ body {
     margin: 0px;
     padding: 10px;
     font-family: 'Noto Sans', sans-serif;
-    background-image: url("../images/bg.jpg");
-    background-size: cover;
 }
 
 button {
@@ -29,6 +27,10 @@ div.navbar {
   div.navbar button:hover {
     background-color: black;
     cursor: pointer;
+  }
+
+  div.leaderboard {
+    text-align: center;
   }
 
 @media only screen and (max-width: 500px) {

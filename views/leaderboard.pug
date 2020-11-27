@@ -17,12 +17,13 @@ body
         button#signout Sign Out
         button#profile Profile
       button#leaderboard Leaderboard
-    -var count=1
-    -for(var row in data)
-        p(id=data[row].username) #{count}. 
-            a(href='/users/'+data[row].username) #{data[row].username}
-            br
-            br
-            | $#{data[row].cash}
-        hr
-        -var count=count+1
+    div.leaderboard
+      -var count=1
+      -for(var row in data)
+          p(id=data[row].username) #{count}. 
+              a(href='/users/'+data[row].username) #{data[row].username}
+              br
+              br
+              | $#{data[row].cash}
+          hr
+          -var count=count+1
