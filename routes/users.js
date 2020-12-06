@@ -20,12 +20,7 @@ router.get('/:username', function(req, res, next) {
     if(err) {
       res.status(404).send();
     } else {
-      console.log(result.rows[0].date_created.toDateString());
-      if(result.rows[0].role_id == 2) {
-        res.render('user', {user_id: user_id, username: result.rows[0].username, date: result.rows[0].date_created.toDateString(), cash: result.rows[0].cash, admin: "true" });
-      } else {
-        res.render('user', {user_id: user_id, username: result.rows[0].username, date: result.rows[0].date_created.toDateString(), cash: result.rows[0].cash });
-      }
+      res.render('user', {user_id: user_id, username: result.rows[0].username, date: result.rows[0].date_created.toDateString(), cash: result.rows[0].cash });
     }
   });
 });

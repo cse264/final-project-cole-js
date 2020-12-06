@@ -8,14 +8,6 @@ window.onload = function () {
         });
     }
 
-    var admin = document.querySelector('#admin');
-    if(admin) {
-        document.getElementById("admin")
-        .addEventListener("click",function(e){
-            location.href='/admin';
-        });
-    }
-
     var signin = document.querySelector('#signin');
     if(signin) {
         document.getElementById("signin")
