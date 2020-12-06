@@ -3,10 +3,10 @@ html
 head
     title= title
     meta(name='viewport', content='width=device-width, initial-scale=1.0')
-    link(rel='stylesheet', href='/stylesheets/user.css')
+    link(rel='stylesheet', href='/stylesheets/admin.css')
     link(rel="preconnect" href="https://fonts.gstatic.com")
     link(href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet")
-    script(src='/javascripts/user.js')
+    script(src='/javascripts/admin.js')
 body
     div.navbar
       button#home Home
@@ -17,9 +17,8 @@ body
         button#signout Sign Out
         button#profile Profile
       button#leaderboard Leaderboard
-    div.profile
-      h1 #{username}
-      p Joined on #{date}
-      p Current cash: $#{cash}
-      if admin
-        button#admin Admin Dashboard
+    div.admin
+      h1 Admin Dashboard
+      input#username(type='text' placeholder='username' name='username')
+      input#cash(type='text' placeholder='cash' name='cash')
+      button#setCash Set Cash

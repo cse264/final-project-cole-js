@@ -11,11 +11,6 @@ const pool = new Pool({
   ssl: { rejectUnauthorized: false }
 });
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
-
 router.get('/:username', function(req, res, next) {
   user_id = ''
   if(req.cookies.username) {
@@ -26,7 +21,11 @@ router.get('/:username', function(req, res, next) {
       res.status(404).send();
     } else {
       console.log(result.rows[0].date_created.toDateString());
-      res.render('user', {user_id: user_id, username: result.rows[0].username, date: result.rows[0].date_created.toDateString(), cash: result.rows[0].cash });
+      if(result.rows[0].role_id == 2) {
+        res.render('user', {user_id: user_id, username: result.rows[0].username, date: result.rows[0].date_created.toDateString(), cash: result.rows[0].cash, admin: "true" });
+      } else {
+        res.render('user', {user_id: user_id, username: result.rows[0].username, date: result.rows[0].date_created.toDateString(), cash: result.rows[0].cash });
+      }
     }
   });
 });

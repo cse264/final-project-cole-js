@@ -1,0 +1,43 @@
+body {
+    background-color: white;
+    margin: 0px;
+    padding: 10px;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+button {
+    font-family: 'Noto Sans', sans-serif;
+}
+
+div.navbar {
+    width: 100%;
+    background-color: green;
+  }
+  
+  div.navbar button {
+    outline: none;
+    height: 100%;
+    background-color: green;
+    border: none;
+    color: white;
+    font-size: 20px;
+    padding: 20px;
+  }
+  
+  div.navbar button:hover {
+    background-color: black;
+    cursor: pointer;
+  }
+
+  div.admin {
+    text-align: center;
+  }
+
+@media only screen and (max-width: 500px) {
+  div.navbar button {
+    text-align: center;
+    width: 100%;
+    display: block;
+  }
+}
+

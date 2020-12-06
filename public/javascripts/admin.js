@@ -8,14 +8,6 @@ window.onload = function () {
         });
     }
 
-    var admin = document.querySelector('#admin');
-    if(admin) {
-        document.getElementById("admin")
-        .addEventListener("click",function(e){
-            location.href='/admin';
-        });
-    }
-
     var signin = document.querySelector('#signin');
     if(signin) {
         document.getElementById("signin")
@@ -76,4 +68,22 @@ window.onload = function () {
         .addEventListener("click", function(e){
             location.href='/';
         });
+
+    document.getElementById("setCash")
+        .addEventListener("click", function(e) {
+        fetch('/cash',
+        {
+            method:"PUT",
+            body: JSON.stringify({
+                cash: document.getElementById("cash").value,
+                username: document.getElementById("username").value
+            }),
+            headers: {
+                "Content-Type": "application/json"
+            }
+        })
+        .then(response => {
+            alert("User's cash has been updated");
+        });
+    });
 }

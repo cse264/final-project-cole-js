@@ -33,6 +33,20 @@ router.get('/', function(req, res, next) {
   }
 });
 
+router.get('/admin', function(req, res, next) {
+  if(req.cookies.username) {
+    pool.query("SELECT role_id FROM users WHERE username=$1", [req.cookies.username], (err, result) => {
+      if(result.rows[0].role_id == 2) {
+        res.render('admin', { title: 'Cash Clicker', user_id: req.cookies.username });
+      } else {
+        res.redirect('/');
+      }
+    });
+  } else {
+    res.redirect('/signin');
+  }
+});
+
 router.get('/signin', function(req, res, next) {
   if(req.query.reattempt == 'true') {
     res.render('signin', { title: 'Cash Clicker', reattempt: 'true'});
@@ -88,6 +102,12 @@ router.post('/signout', function(req, res, next) {
 
 router.post('/getCash', function(req, res, next) {
   pool.query("UPDATE users SET cash=cash+1 WHERE username=$1", [req.body.username], (err, result) => {
+    res.status(200).send();
+  })
+});
+
+router.put('/cash', function(req, res, next) {
+  pool.query("UPDATE users SET cash=$1 WHERE username=$2", [req.body.cash, req.body.username], (err, result) => {
     res.status(200).send();
   })
 });
