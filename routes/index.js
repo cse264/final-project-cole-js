@@ -1,15 +1,16 @@
 var express = require('express');
 var router = express.Router();
+require('dotenv').config();
 
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 const { Pool } = require('pg')
 const pool = new Pool({
-  host: 'ec2-34-232-24-202.compute-1.amazonaws.com',
-  user: 'enrudtpvrsgwum',
-  database: 'd1d9qff1vs7qpm',
-  password: 'b7acfced35709d3c415d928254be7a310b325a45de5e117e242ff66185ddd7db',
+  host: process.env.DATABASE_HOST,
+  user: process.env.DATABASE_USER,
+  database: process.env.DATABASE,
+  password: process.env.DATABASE_PASSWORD,
   port: 5432,
   ssl: { rejectUnauthorized: false }
 });
