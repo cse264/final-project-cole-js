@@ -123,4 +123,14 @@ router.get('/leaderboard', function(req, res, next) {
   });
 });
 
+router.get('/recent', function(req, res, next) {
+  username = ''
+  if(req.cookies.username) {
+    username = req.cookies.username;
+  }
+  pool.query("SELECT username, date_created FROM users ORDER BY date_created DESC", (err, result) => {
+    res.render('recentlyJoined', {title: "Cash Clicker", data: result.rows, user_id: username});
+  });
+});
+
 module.exports = router;
