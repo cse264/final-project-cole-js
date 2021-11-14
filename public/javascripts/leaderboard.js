@@ -63,6 +63,11 @@ window.onload = function () {
         .addEventListener("click", function(e){
             location.href='/leaderboard';
         });
+
+    document.getElementById("recentlyJoined")
+        .addEventListener("click", function(e){
+            location.href='/recent';
+        });
         
     document.getElementById("home")
         .addEventListener("click", function(e){

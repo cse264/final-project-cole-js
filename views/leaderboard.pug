@@ -17,7 +17,9 @@ body
         button#signout Sign Out
         button#profile Profile
       button#leaderboard Leaderboard
+      button#recentlyJoined Recently Joined
     div.leaderboard
+      h1 Leaderboard
       -var count=1
       -for(var row in data)
           p(id=data[row].username) #{count}. 
