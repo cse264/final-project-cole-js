@@ -19,8 +19,10 @@ router.get('/:username', function(req, res, next) {
   pool.query("SELECT * FROM users WHERE username=$1", [req.params.username], function(err, result) {
     if(err) {
       res.status(404).send();
-    } else {
+    } else if(result.rows[0]) {
       res.render('user', {user_id: user_id, username: result.rows[0].username, date: result.rows[0].date_created.toDateString(), cash: result.rows[0].cash });
+    } else {
+      res.render('error')
     }
   });
 });
