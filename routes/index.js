@@ -66,6 +66,7 @@ router.get('/signup', function(req, res, next) {
 
 
 router.post('/signup', function(req, res, next) {
+  req.body.username = req.body.username.trim()
   bcrypt.hash(req.body.password, saltRounds, function(err, hash) {
     pool.query('INSERT INTO users (username, password, date_created, cash) VALUES ($1, $2, $3, $4)', 
       [req.body.username, hash, new Date(), 0], (err, result) => {
